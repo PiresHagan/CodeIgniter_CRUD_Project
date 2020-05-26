@@ -3,19 +3,13 @@
 <head>
     <title>Edit User</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"crossorigin="anonymous">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-</head>
+  </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('auth/toPosting'); ?>" style="width:1100px; ">Postingan Universitas Brawijaya </a>
+                    <a class="nav-link" href="<?php echo site_url('auth/toPosting'); ?>" style="width: 1100px;">Postingan Universitas Brawijaya </a>
                 </ul>
               <form action="<?php echo site_url('auth/toList'); ?>" method="POST" class="form-inline my-2 my-lg-0">
           <button class="btn btn-yellow mr-sm-5 "" type="submit">List User</button>
@@ -29,37 +23,55 @@
 <div class="container" style="margin-top: 20px">
 	<div class="col-md-12">
     <?php
-        if($getDataPostEdit){
-          $id = $getDataPostEdit->ID_POST;
-          $judul = $getDataPostEdit->JUDUL_POST;
-          $isi = $getDataPostEdit->ISI_POST;
+        if($getDataEdit){
+          $nim = $getDataEdit->NIM;
+          $nama = $getDataEdit->NAMA;
+          $username = $getDataEdit->USERNAME;
+          $alamat = $getDataEdit->ALAMAT;
+          $password = $getDataEdit->PASSWORD;
+          $foto = $getDataEdit->FOTO;
         } else {
-          $id = "";
-          $judul = "";
-          $isi = "";
-        }
+          $nim = "";
+          $nama = "";
+          $username = "";
+          $alamat = "";
+          $password = "";
+          $foto = "";
+      }
     ?>
-    <h2 style="text-align: center;margin-bottom: 30px"> Edit Post</h2><hr>
-    <form method="post" action="<?php echo site_url('auth/updatePost/'.$id); ?>" enctype="multipart/form-data" style="padding: 10px 20px">
-      <right><p>
-        <a  style="padding: 10px 20px;">Judul Post</a>
-      </p></right>
-      <center>
-        <input type="text" name="judul_artikel" class="form-control" size="30" value="<?php echo $judul ?>" style="width: 98%; ">
-      </center><br>
-      <right>
-        <p>
-        <a  style="padding: 10px 20px;">Isi Post</a>
-        </p>
-      </right>
-      <center>
-      <textarea name="isi" type="textarea" class="form-control" cols="60" rows="15" style="width: 98%; " ><?php echo $isi ?>
-      </textarea>
-      </center><br>
-      <center>
-        <button class="btn btn-yellow mr-sm-5 "" type="submit">Submit Post</button>
-      </center> 
-  </form>
+    <h2 style="text-align: center;margin-bottom: 30px"> Edit User</h2><hr>
+    <form method="post" action="<?php echo site_url('auth/updateUser/'.$nim); ?>" enctype="multipart/form-data">
+        <right><p>
+        <a  style="padding: 10px 20px;">NIM</a>
+        </p></right>
+        <center><input type="text"  value="<?php echo $nim ?>" class="form-control"name="NIM" size="30" style="width: 98%; "></center><br>
+        <right><p>
+        <a  style="padding: 10px 20px;">NAMA</a>
+        </p></right>
+        <center><input type="text"  value="<?php echo $nama ?>" class="form-control"name="NAMA" size="30" style="width: 98%; "></center><br>
+        <right><p>
+        <a  style="padding: 10px 20px;">USERNAME</a>
+        </p></right>
+        <center><input type="text"   value="<?php echo $username ?>" class="form-control"name="USERNAME" size="30" style="width: 98%; "></center><br>
+        <right><p>
+        <a  style="padding: 10px 20px;">ALAMAT</a>
+        </p></right>
+        <center><input type="text"  value="<?php echo $alamat ?>" class="form-control"name="ALAMAT" size="30" style="width: 98%; "></center><br>
+        <right><p>
+        <a  style="padding: 10px 20px;">PASSWORD</a>
+        </p></right>
+        <center><input type="text"  value="<?php echo $password ?>" class="form-control"name="PASSWORD" size="30" style="width: 98%; "></center><br>
+        <right><p>
+        <a  style="padding: 10px 20px;">FOTO ( <?php echo $foto ?> )</a>
+        </p></right>
+        <center><input type="file"  class="form-control"name="foto" size="30" style="width: 98%; "></center><hr>
+         <button class="btn btn-block mybtn btn-yellow tx-tfm"" type="submit">Submit</button>
+         <br>
+    </form>
+    <form action="<?php echo site_url('auth/toList'); ?>" method="POST" class="form-inline my-2 my-lg-0">
+          <button class="btn btn-block mybtn btn-yellow tx-tfm"" type="submit">Cancel</button>
+        </form>
+        <br><br>
 	</div>
 </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
