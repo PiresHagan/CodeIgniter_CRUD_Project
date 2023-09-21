@@ -1,6 +1,6 @@
 # Web-Programming
 Creating a web with several functionalities, namely Login-Logout, CRUD Post, CRUD User using the CodeIgniter framework.
-# Konfigurasi Database :
+# Database Configuration:
 - database.php
 # Controllers :
 - auth.php
